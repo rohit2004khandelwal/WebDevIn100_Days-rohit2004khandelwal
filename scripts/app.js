@@ -525,8 +525,31 @@ class WebDev100Days {
         demoLink: "./public/Calculator/index.html",
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript"],
+
         features: ["Addition", "Subtraction", "Multiplication", "Division", "Clear"]
-},
+      },
+
+      
+        {
+
+        originalDay: 122,
+        name: "Hamster Slap",
+        description: "Slap the Hamster coming from the hole.",
+        demoLink: "./public/Day-69/index.html",
+        category: "utilities",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Hide n seek", "Catch", "Slap"]
+      },
+        {
+
+        originalDay: 123,
+        name: "LeetMatrix",
+        description: "Check Leetcode stats ",
+        demoLink: "./public/LeetMatrix/index.html",
+        category: "basic",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["LeetCode", "Stats", "Graph"]
+      }
     ];
 
     // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
