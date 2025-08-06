@@ -6,7 +6,7 @@ class WebDev100Days {
     this.filteredProjects = [];
     this.currentFilter = 'all';
     this.currentPage = 1;
-    this.projectsPerPage = 20; // Increased for table view
+    this.projectsPerPage = 20;
     this.searchTerm = '';
 
     this.init();
@@ -449,7 +449,6 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Responsive Design", "Smooth Animations", "Contact Form"]
       },
-      // Non-numbered projects (using 100+ for consistency)
       {
         originalDay: 101,
         name: "Etch-a-Sketch",
@@ -717,7 +716,6 @@ class WebDev100Days {
     this.currentFilter = filter;
     this.currentPage = 1;
 
-    // Update active tab
     document.querySelectorAll('.filter-tab').forEach(tab => {
       tab.classList.remove('active');
     });
@@ -732,12 +730,10 @@ class WebDev100Days {
 
     if (!tableContainer) return;
 
-    // Calculate pagination for table
     const startIndex = (this.currentPage - 1) * this.projectsPerPage;
     const endIndex = startIndex + this.projectsPerPage;
     const projectsToShow = this.filteredProjects.slice(startIndex, endIndex);
 
-    // Clear container
     tableContainer.innerHTML = '';
 
     if (projectsToShow.length === 0) {
@@ -751,11 +747,9 @@ class WebDev100Days {
       emptyState.classList.remove('show');
     }
 
-    // Create table
     const table = document.createElement('table');
     table.className = 'projects-table';
 
-    // Table header
     table.innerHTML = `
       <thead>
         <tr>
@@ -804,14 +798,12 @@ class WebDev100Days {
       </tbody>
     `;
 
-    // Append table to container
     tableContainer.appendChild(table);
 
     this.renderPagination();
   }
 
   sortTable(column) {
-    // Simple sorting implementation
     this.filteredProjects.sort((a, b) => {
       if (column === 'day') {
         return a.day - b.day;
@@ -838,7 +830,6 @@ class WebDev100Days {
     paginationContainer.style.display = 'flex';
     paginationContainer.innerHTML = '';
 
-    // Previous button
     const prevBtn = document.createElement('button');
     prevBtn.className = 'pagination-btn';
     prevBtn.disabled = this.currentPage === 1;
@@ -846,9 +837,54 @@ class WebDev100Days {
     prevBtn.dataset.page = this.currentPage - 1;
     paginationContainer.appendChild(prevBtn);
 
-    // Page numbers
-    for (let i = 1; i <= totalPages.
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= this.currentPage - 2 && i <= this.currentPage + 2)) {
+        const pageBtn = document.createElement('button');
+        pageBtn.className = `pagination-btn ${i === this.currentPage ? 'active' : ''}`;
+        pageBtn.textContent = i;
+        pageBtn.dataset.page = i;
+        paginationContainer.appendChild(pageBtn);
+      } else if (i === this.currentPage - 3 || i === this.currentPage + 3) {
+        const ellipsis = document.createElement('span');
+        ellipsis.textContent = '...';
+        ellipsis.className = 'pagination-info';
+        paginationContainer.appendChild(ellipsis);
+      }
+    }
 
-    // ... (rest of pagination logic is cut off, but the file structure is mostly complete)
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'pagination-btn';
+    nextBtn.disabled = this.currentPage === totalPages;
+    nextBtn.innerHTML = '›';
+    nextBtn.dataset.page = this.currentPage + 1;
+    paginationContainer.appendChild(nextBtn);
 
-// ... (rest of the file)
+    const pageInfo = document.createElement('div');
+    pageInfo.className = 'pagination-info';
+    pageInfo.textContent = `${this.currentPage} of ${totalPages}`;
+    paginationContainer.appendChild(pageInfo);
+  }
+
+  debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+}
+
+// Start the app when the page loads
+let app; // Global app instance for table sorting
+document.addEventListener('DOMContentLoaded', () => {
+  app = new WebDev100Days();
+});
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = WebDev100Days;
+}
