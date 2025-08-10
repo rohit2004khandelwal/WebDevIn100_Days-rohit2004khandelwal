@@ -19,11 +19,11 @@ class WebDev100Days {
     this.setupScrollToTop();
     this.setupMobileMenu();
     await this.loadProjects();
+    this.updateStatistics();
     this.renderTable();
   }
 
   setupEventListeners() {
-    // Search functionality
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
 
@@ -41,14 +41,12 @@ class WebDev100Days {
       });
     }
 
-    // Filter tabs
     document.addEventListener('click', (e) => {
       if (e.target.matches('.filter-tab')) {
         this.setActiveFilter(e.target.dataset.filter);
       }
     });
 
-    // Pagination
     document.addEventListener('click', (e) => {
       if (e.target.matches('.pagination-btn')) {
         const page = parseInt(e.target.dataset.page);
@@ -59,7 +57,6 @@ class WebDev100Days {
       }
     });
 
-    // Project row clicks - open demo in new tab
     document.addEventListener('click', (e) => {
       if (e.target.matches('.demo-btn') || e.target.closest('.demo-btn')) {
         e.preventDefault();
@@ -95,7 +92,7 @@ class WebDev100Days {
   updateThemeIcon(theme) {
     const themeToggle = document.querySelector('.theme-toggle');
     if (themeToggle) {
-      themeToggle.innerHTML = theme === 'dark' 
+      themeToggle.innerHTML = theme === 'dark'
         ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
         : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>';
     }
@@ -431,14 +428,23 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript", "SVG"],
         features: ["Move Validation", "Piece Animation", "Game Logic", "Interactive Board"]
       },
-        {
+      {
+        originalDay: 54,
+        name: "Rock Paper Scissors",
+        description: "Interactive rock paper scissors game with user vs computer gameplay.",
+        demoLink: "./public/Day-54_RockPaperSessior/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Move Validation", "Piece Animation", "Game Logic", "Interactive Board"]
+      },
+      {
         originalDay: 56,
         name: "TypeRush",
         description: "Typing speed test game with real-time feedback and statistics.",
         demoLink: "./public/Day-56_TypeRush/index.html",
         category: "games",
         technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Typing Challenge", "Real-time Feedback", "Statistics Tracking"]
+        features: ["Move Validation", "Piece Animation", "Game Logic", "Interactive Board"]
       },
       {
         originalDay: 72,
@@ -549,67 +555,67 @@ class WebDev100Days {
         features: ["Genre-Based Suggestions", "Book Covers & Descriptions", "Responsive Design", "Interactive Filters"]
       },
       {
-          originalDay: 112,
-          name: "Student Grade Analyzer",
-          description: "Analyzes student marks and provides insights like total, average, grade, and performance level.",
-          demoLink: "./public/Student_Grade_Analyzer/index.html",
-          category: "education",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["Marks Input", "Total & Average Calculation", "Grade Assignment", "Performance Feedback"]
+        originalDay: 112,
+        name: "Student Grade Analyzer",
+        description: "Analyzes student marks and provides insights like total, average, grade, and performance level.",
+        demoLink: "./public/Student_Grade_Analyzer/index.html",
+        category: "education",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Marks Input", "Total & Average Calculation", "Grade Assignment", "Performance Feedback"]
       },
       {
-          originalDay: 113,
-          name: "Mood Based Music Suggester",
-          description: "Recommends music tracks based on the user's selected mood for a personalized listening experience.",
-          demoLink: "./public/Mood_Music_Suggester/index.html",
-          category: "entertainment",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["Mood Selection", "Curated Song List", "Audio Player Integration", "Responsive UI"]
+        originalDay: 113,
+        name: "Mood Based Music Suggester",
+        description: "Recommends music tracks based on the user's selected mood for a personalized listening experience.",
+        demoLink: "./public/Mood_Music_Suggester/index.html",
+        category: "entertainment",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Mood Selection", "Curated Song List", "Audio Player Integration", "Responsive UI"]
       },
       {
-          originalDay: 114,
-          name: "CalRace",
-          description: "A fast-paced calculator racing game where players solve math problems under time pressure to advance.",
-          demoLink: "./public/Day-45/index.html",
-          category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["Math Problem Challenges", "Timer-Based Gameplay", "Score Tracking", "Level Progression"]
+        originalDay: 114,
+        name: "CalRace",
+        description: "A fast-paced calculator racing game where players solve math problems under time pressure to advance.",
+        demoLink: "./public/Day-45/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Math Problem Challenges", "Timer-Based Gameplay", "Score Tracking", "Level Progression"]
       },
       {
-          originalDay: 115,
-          name: "Word Guess Game",
-          description: "An interactive word guessing game where players try to reveal the hidden word within limited attempts.",
-          demoLink: " ./public/Day53-Word-Guess-Game/index.html",
-          category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["Random Word Generation", "Limited Attempts", "Letter Hints", "Win/Loss Feedback"]
+        originalDay: 115,
+        name: "Word Guess Game",
+        description: "An interactive word guessing game where players try to reveal the hidden word within limited attempts.",
+        demoLink: "./public/Day53-Word-Guess-Game/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Random Word Generation", "Limited Attempts", "Letter Hints", "Win/Loss Feedback"]
       },
       {
-          originalDay: 116,
-          name: "4 in a Row",
-          description: "A strategic two-player game where the goal is to connect four discs in a row vertically, horizontally, or diagonally.",
-          demoLink: "./public/Day-57_4_in_a_row/index.html",
-          category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["Two Player Mode", "Win Detection", "Interactive Grid", "Game Reset"]
+        originalDay: 116,
+        name: "4 in a Row",
+        description: "A strategic two-player game where the goal is to connect four discs in a row vertically, horizontally, or diagonally.",
+        demoLink: "./public/Day-57_4_in_a_row/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Two Player Mode", "Win Detection", "Interactive Grid", "Game Reset"]
       },
       {
-          originalDay: 117,
-          name: "Budget Tracker",
-          description: "A simple financial tracking tool to manage income, expenses, and visualize spending habits.",
-          demoLink: "./public/Budget-Tracker/index.html",
-          category: "productivity",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["Add Income & Expenses", "Balance Calculation", "Expense Categories", "Persistent Local Storage"]
+        originalDay: 117,
+        name: "Budget Tracker",
+        description: "A simple financial tracking tool to manage income, expenses, and visualize spending habits.",
+        demoLink: "./public/Budget-Tracker/index.html",
+        category: "productivity",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Add Income & Expenses", "Balance Calculation", "Expense Categories", "Persistent Local Storage"]
       },
       {
-          originalDay: 118,
-          name: "Memory Game App",
-          description: "A classic card-flipping memory game where players match pairs to win with the fewest moves.",
-          demoLink: "./public/Memory Game App/index.html",
-          category: "games",
-          technologies: ["HTML", "CSS", "JavaScript"],
-          features: ["Card Matching Logic", "Move Counter", "Timer", "Game Reset Functionality"]
+        originalDay: 118,
+        name: "Memory Game App",
+        description: "A classic card-flipping memory game where players match pairs to win with the fewest moves.",
+        demoLink: "./public/Memory Game App/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Card Matching Logic", "Move Counter", "Timer", "Game Reset Functionality"]
       },
       {
         originalDay: 119,
@@ -620,48 +626,98 @@ class WebDev100Days {
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Canvas Drawing", "Color Picker", "Brush Size Control", "Clear Canvas Button"]
       },
-
-      { 
-          originalDay: 120,
-          name: "Fruit Slicer ",
+      {
+        originalDay: 120,
+        name: "Fruit Slicer",
         description: "Every slice counts. Miss and it’s game over!",
         demoLink: "./public/Fruit_Slicer_Game/index.html",
         category: "games",
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Score System", "Lifes", "Fruit Cutting"]
       },
-
-      { 
-          originalDay: 121,
-          name: "Github Profle Finder ",
-        description: "Find Github Profile ",
+      {
+        originalDay: 121,
+        name: "BattleShip",
+        description: "Destroy the enemy ship",
+        demoLink: "./public/Day-71/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript", "Node.js"],
+        features: ["Hide 'n' seek", "Catch"]
+      },
+      {
+        originalDay: 122,
+        name: "Github Profle Finder",
+        description: "Find Github Profile",
         demoLink: "./public/Github_Profile_Finder/index.html",
         category: "utilities",
         technologies: ["HTML", "CSS", "JavaScript"],
-        features: ["Github", "Github Followers ", "Creative"]
+        features: ["Github", "Github Followers", "Creative"]
       },
-        {
-
-        originalDay: 122,
+      {
+        originalDay: 123,
+        name: "HeliFly",
+        description: "Fly the Helicopter",
+        demoLink: "./public/Day-55/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Fly"]
+      },
+      {
+        originalDay: 124,
+        name: "RoboBuilder",
+        description: "Buildd the Robot",
+        demoLink: "./public/Day-72/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Repair", "Fix"]
+      },
+      {
+        originalDay: 125,
+        name: "Flappy Bird",
+        description: "Play with Bird",
+        demoLink: "./public/flappy-bird/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Bird", "Score", "Hard"]
+      },
+      {
+        originalDay: 126,
         name: "Hamster Slap",
         description: "Slap the Hamster coming from the hole.",
         demoLink: "./public/Day-69/index.html",
-        category: "utilities",
+        category: "games",
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["Hide n seek", "Catch", "Slap"]
       },
-        {
-
-        originalDay: 123,
+      {
+        originalDay: 127,
         name: "LeetMatrix",
-        description: "Check Leetcode stats ",
+        description: "Check Leetcode stats",
         demoLink: "./public/LeetMatrix/index.html",
         category: "basic",
         technologies: ["HTML", "CSS", "JavaScript"],
         features: ["LeetCode", "Stats", "Graph"]
       },
-        {
-        originalDay: 150,
+      {
+        originalDay: 128,
+        name: "LoveVerse",
+        description: "A Lovely Website with some crazy stuffs.",
+        demoLink: "./public/Day-70/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Love Game", "Romantic"]
+      },
+      {
+        originalDay: 129,
+        name: "QuizProgram",
+        description: "Take a random quiz",
+        demoLink: "./public/QuizProgram/index.html",
+        category: "basic",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Quiz", "Scores"]
+      },
+      {
+        originalDay: 130,
         name: "University Management System",
         description: "Manage university operations including courses, students, and faculty.",
         demoLink: "./public/University_managment_system/index.html",
@@ -670,7 +726,88 @@ class WebDev100Days {
         features: ["Visitor Management", "History Tracking", "Search Functionality"]
       },
       {
-        originalDay: 125, // This is your project
+        originalDay: 131,
+        name: "Fruit Ninja",
+        description: "Play with fruits",
+        demoLink: "./public/Day-59/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Cut"]
+      },
+      {
+        originalDay: 132,
+        name: "Solitaire",
+        description: "Play with Cards",
+        demoLink: "./public/Day-90/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Ace", "King"]
+      },
+      {
+        originalDay: 133,
+        name: "Door Game",
+        description: "Open the Doors of your luck",
+        demoLink: "./public/Day-91/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Luck", "Doors"]
+      },
+      {
+        originalDay: 134,
+        name: "Roast Battle",
+        description: "Roast Your self by AI",
+        demoLink: "./public/Day-92/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Roast"]
+      },
+      {
+        originalDay: 135,
+        name: "Compliment Generator",
+        description: "Generate Compliment for your love once",
+        demoLink: "./public/Day-93/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Compliments"]
+      },
+      {
+        originalDay: 136,
+        name: "PickUp Lines",
+        description: "Generate PickUp Lines for your someonce",
+        demoLink: "./public/Day-94/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["PickUp Lines"]
+      },
+      {
+        originalDay: 137,
+        name: "Hero Identity",
+        description: "Know who you are",
+        demoLink: "./public/Day-95/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Hero", "Powers"]
+      },
+      {
+        originalDay: 138,
+        name: "Fotune Teller",
+        description: "Know your future",
+        demoLink: "./public/Day-96/index.html",
+        category: "games",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        features: ["Future", "Fortune"]
+      },
+      {
+        originalDay: 144,
+        name: "Fitness Tracker",
+        description: "Advanced, vibrant web app to track daily steps and water intake with charts, themes, and responsive design.",
+        demoLink: "./public/Fitness_Tracker/index.html",
+        category: "productivity",
+        technologies: ["HTML", "CSS", "JavaScript", "Chart.js"],
+        features: ["Daily Steps & Water Input", "Dark/Light Mode", "Chart.js Visualizations", "Responsive Design", "Duplicate Prevention", "Tooltips on Charts"]
+      },
+      {
+        originalDay: 145, // This is your project, added at the end
         name: "Calculator",
         description: "A simple calculator for basic arithmetic operations.",
         demoLink: "./public/Calculator/index.html",
@@ -680,7 +817,7 @@ class WebDev100Days {
       }
     ];
 
-  // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
+    // Assign sequential day numbers (1, 2, 3, 4...) regardless of original day numbers
     this.projects = projectsData.map((project, index) => ({
       ...project,
       day: index + 1
@@ -689,17 +826,48 @@ class WebDev100Days {
     this.filteredProjects = [...this.projects];
   }
 
+  updateStatistics() {
+    const statsContainer = document.querySelector('.challenge-stats');
+    if (!statsContainer) return;
+
+    // Calculate unique technologies
+    const uniqueTechnologies = [...new Set(
+      this.projects.flatMap(project => project.technologies)
+    )].length;
+
+    // Update stats
+    statsContainer.innerHTML = `
+      <h3 class="challenge-stats-title">Challenge Statistics</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">${this.projects.length}</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100</div>
+          <div class="stat-label">Total Goal</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">${uniqueTechnologies}</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Learning</div>
+        </div>
+      </div>
+    `;
+  }
+
   filterProjects() {
     let filtered = [...this.projects];
 
-    // Filter by category
     if (this.currentFilter !== 'all') {
       filtered = filtered.filter(project => project.category === this.currentFilter);
     }
 
-    // Filter by search term
     if (this.searchTerm) {
-      filtered = filtered.filter(project => 
+      filtered = filtered.filter(project =>
         project.name.toLowerCase().includes(this.searchTerm) ||
         project.description.toLowerCase().includes(this.searchTerm) ||
         project.technologies.some(tech => tech.toLowerCase().includes(this.searchTerm)) ||
@@ -708,7 +876,7 @@ class WebDev100Days {
     }
 
     this.filteredProjects = filtered;
-    this.currentPage = 1; // Reset to first page
+    this.currentPage = 1;
     this.renderTable();
   }
 
@@ -878,13 +1046,11 @@ class WebDev100Days {
   }
 }
 
-// Start the app when the page loads
-let app; // Global app instance for table sorting
+let app;
 document.addEventListener('DOMContentLoaded', () => {
   app = new WebDev100Days();
 });
 
-// Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = WebDev100Days;
 }
